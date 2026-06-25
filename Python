@@ -1,0 +1,22 @@
+from PyPDF2 import PdfMerger
+
+# Appending in the end
+def by_appending():
+    merger = PdfMerger()
+    f1 = open("samplepdf1.pdf", "rb")
+    merger.append(f1)
+    merger.append("samplepdf2.pdf")
+
+    merger.write("mergedPdf.pdf")
+
+
+# Inserting at after an specified page no.
+def by_inserting():
+    merger = PdfMerger()
+    merger.append("samplepdf1.pdf")
+    merger.merge(3, "samplepdf2.pdf")
+    merger.write("mergedPdf1.pdf")
+
+
+by_appending()
+by_inserting()
